@@ -12,6 +12,7 @@ from routines.breathing_calibration import breathing_calibration
 from routines.rest import rest
 from routines.videos import videos
 from routines.short_break import short_break
+from routines.end import end
 
 
 # Init
@@ -97,6 +98,7 @@ else:
 
 # Run rest routine #1
 result = rest(screen, clock)
+
 if result is None:
     print("Rest routine exited")
     running = False
@@ -135,6 +137,7 @@ else:
 
 # Run break routine #1
 result = short_break(screen, clock)
+
 if result is None:
     print("Break routine exited")
     running = False
@@ -145,6 +148,7 @@ else:
 
 # Run rest routine #2
 result = rest(screen, clock)
+
 if result is None:
     print("Rest routine exited")
     running = False
@@ -192,6 +196,7 @@ else:
 
 # Run break routine #2
 result = short_break(screen, clock)
+
 if result is None:
     print("Break routine exited")
     running = False
@@ -202,6 +207,7 @@ else:
 
 # Run rest routine #3
 result = rest(screen, clock)
+
 if result is None:
     print("Rest routine exited")
     running = False
@@ -210,84 +216,71 @@ else:
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# Run breathing calibration
-result = breathing_calibration(screen, clock)
-if result is None:
-    print("Breathing calibration exited")
-    running = False
-else:
-    print("Breathing calibration: SUCCESS")
-
-# Run break routine
-result = short_break(screen, clock)
-if result is None:
-    print("Break routine exited")
-    running = False
-else:
-    print("Break routine: SUCCESS")
-
-
-# Run social media routine
-result = videos(screen, clock)
-if result is None:
-    print("Social media routine exited")
-    running = False
-else:
-    print("Social media routine: SUCCESS")
-
-
-# Run rest routine
-result = rest(screen, clock)
-if result is None:
-    print("Rest routine exited")
-    running = False
-else:
-    print("Rest routine: SUCCESS")
-
-
-# Run first questionnaire
+# Run STATE-LEVEL QUESTIONNAIRE #5 (before second S-TOL )
 result = questionnaire_routine(screen, clock)
+
 if result is None:
     print("Questionnaire routine exited")
     running = False
 else:
     print(f"Completed questionnaire instruction #{result}")
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# Run gradCPT
+# Run S-TOL #2
+# (Placeholder for S-TOL routine, not implemented in this snippet)
+print("S-TOL #2 routine would run here.")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #6 (after second S-TOL )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run break routine #3
+result = short_break(screen, clock)
+
+if result is None:
+    print("Break routine exited")
+    running = False
+else:
+    print("Break routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run rest routine #4
+result = rest(screen, clock)
+
+if result is None:
+    print("Rest routine exited")
+    running = False
+else:
+    print("Rest routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #7 (before second gradCPT )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run gradCPT #2
 if running:
-    print("=" * 50)
-    print("GRADCPT ROUTINE")
-    print("=" * 50)
     result = gradCPT_routine(screen, clock, config)
+
     if result is None:
         print("GradCPT routine exited")
         running = False
@@ -297,39 +290,91 @@ if running:
         print("GradCPT routine: FAIL")
     print()
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# Run second questionnaire
+# Run STATE-LEVEL QUESTIONNAIRE #8 (after second gradCPT )
 result = questionnaire_routine(screen, clock)
+
 if result is None:
     print("Questionnaire routine exited")
     running = False
 else:
     print(f"Completed questionnaire instruction #{result}")
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# Main loop (optional - for testing after experiment)
-while running:
-    t = clock.get_time()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                running = False
-            elif event.key == pygame.K_SPACE:
-                abs_time = berlin_time_now()
-                rel_time = clock.get_time()
-                print(f"Space pressed at {rel_time:.3f} s | Berlin time: {abs_time}")
+# Run break routine #4
+result = short_break(screen, clock)
 
-    # Fill background
-    screen.fill((0, 0, 0))
-    
-    # Draw something simple
-    pygame.draw.rect(screen, (255, 255, 255), (350, 250, 100, 100))
-    
-    # Flip display to show the frame
-    pygame.display.flip()
+if result is None:
+    print("Break routine exited")
+    running = False
+else:
+    print("Break routine: SUCCESS")
 
-# Clean up
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #9 (before social media videos )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run social media routine
+result = videos(screen, clock)
+
+if result is None:
+    print("Social media routine exited")
+    running = False
+else:
+    print("Social media routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #10 (after social media videos )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run break routine #5
+result = short_break(screen, clock)
+
+if result is None:
+    print("Break routine exited")
+    running = False
+else:
+    print("Break routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run breathing calibration #2
+result = breathing_calibration(screen, clock)
+
+if result is None:
+    print("Breathing calibration exited")
+    running = False
+else:
+    print("Breathing calibration: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run end routine
+end(screen, clock)
+print("Experiment complete")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Clean up and quit
 pygame.quit()
 print("Experiment ended.")

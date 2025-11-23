@@ -1,0 +1,5 @@
+subject,block,trial,condition,stimulus_type,correct_key,key_pressed,rt,transition_step,coherence,frame_count,experiment_time,wall_time,response_type,correct
+001,1,1,dom,city,f,,0,219,1.0,1,111.84853191000002,2025-11-23 17:25:50.966,omission,0
+001,2,1,dom,city,f,,0,219,1.0,2,114.29715051499988,2025-11-23 17:25:53.415,omission,0
+001,2,2,dom,city,f,,0,219,1.0,3,114.99810444099967,2025-11-23 17:25:54.116,omission,0
+001,2,3,dom,city,f,,0,219,1.0,4,115.6956274969998,2025-11-23 17:25:54.813,omission,0
