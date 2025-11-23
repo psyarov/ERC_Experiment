@@ -4,8 +4,15 @@ from core.clock import Clock
 from core.fps_estimator import FPSEstimator
 from core.gradcpt_config import GradCPTConfig
 from datetime import datetime, timezone, timedelta
+
 from routines.welcome import welcome_routine
 from routines.gradcpt import gradCPT_routine
+from routines.questionnaire import questionnaire_routine
+from routines.breathing_calibration import breathing_calibration
+from routines.rest import rest
+from routines.videos import videos
+from routines.short_break import short_break
+
 
 # Init
 print("Launching main.py...")
@@ -62,6 +69,51 @@ if running:
         print("Welcome routine: FAIL - continuing with experiment")
     print()
 
+
+# Run break routine
+result = short_break(screen, clock)
+if result is None:
+    print("Break routine exited")
+    running = False
+else:
+    print("Break routine: SUCCESS")
+
+
+# Run social media routine
+result = videos(screen, clock)
+if result is None:
+    print("Social media routine exited")
+    running = False
+else:
+    print("Social media routine: SUCCESS")
+
+
+# Run rest routine
+result = rest(screen, clock)
+if result is None:
+    print("Rest routine exited")
+    running = False
+else:
+    print("Rest routine: SUCCESS")
+
+
+# Run breathing calibration 1
+result = breathing_calibration(screen, clock)
+if result is None:
+    print("Breathing calibration exited")
+    running = False
+else:
+    print("Breathing calibration: SUCCESS")
+
+# Run first questionnaire
+result = questionnaire_routine(screen, clock)
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+
 # Run gradCPT
 if running:
     print("=" * 50)
@@ -76,6 +128,16 @@ if running:
     else:
         print("GradCPT routine: FAIL")
     print()
+
+
+# Run second questionnaire
+result = questionnaire_routine(screen, clock)
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
 
 # Main loop (optional - for testing after experiment)
 while running:
@@ -103,97 +165,3 @@ while running:
 # Clean up
 pygame.quit()
 print("Experiment ended.")
-
-
-
-# BACKUP 09-11-2025 23:57
-# import os
-# import pygame
-
-# from core.clock import Clock
-# from datetime import datetime, timezone, timedelta
-# from routines.welcome import welcome_routine
-# from routines.gradcpt import gradCPT_routine
-
-# # Init
-# print("Launching main.py...")
-# print("Initializing pygame...")
-# pygame.init()
-
-# print("Creating screen...")
-# screen = pygame.display.set_mode((800, 600))
-# pygame.display.set_caption("Experiment Window")
-
-# print("Setting up clock...")
-# clock = Clock()
-# BERLIN_TZ = timezone(timedelta(hours=1))
-
-# def berlin_time_now():
-# 	return datetime.now(BERLIN_TZ).strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-
-# running = True
-
-# print("Experiment running!\n\nHELLO, WORLD!\n\n")
-
-
-# # Run welcome routine
-
-# print("Starting welcome routine...")
-# result = welcome_routine(screen, clock)
-
-# if result is None:
-# 	print("Welcome routine exited (ESC or window closed)")
-# 	running = False
-# elif result:
-# 	print("Welcome routine: SUCCESS - continuing with experiment")
-# else:
-# 	print("Welcome routine: FAIL - continuing with experiment")
-
-
-# # Run gradCPT
-# print("Starting gradCPT routine...")
-
-# result = gradCPT_routine(screen, clock)
-# if result is None:
-#     print("Morphing routine exited")
-#     running = False
-# elif result:
-#     print("Morphing routine: SUCCESS")
-# else:
-#     print("Morphing routine: FAIL")
-
-# # Main loop
-
-# while running:
-# 	t = clock.get_time()
-	
-# 	for event in pygame.event.get():
-# 		if event.type == pygame.QUIT:
-# 			running = False
-# 		elif event.type == pygame.KEYDOWN:
-# 			if event.key == pygame.K_ESCAPE:
-# 				running = False
-# 			elif event.key == pygame.K_SPACE:
-# 				abs_time = berlin_time_now()
-# 				rel_time = clock.get_time()
-# 				print(f"Space pressed at {rel_time:.3f} s | Berlin time: {abs_time}")
-
-	
-# 	# Fill background
-# 	screen.fill((0, 0, 0))
-
-# 	# Draw something simple
-# 	pygame.draw.rect(screen, (255, 255, 255), (350, 250, 100, 100))
-
-# 	# Flip display to show the frame
-# 	pygame.display.flip()
-
-# # Clean up
-# pygame.quit()
-# print("Experiment ended.")
-
-
-
-# while running:
-# 	t = clock.get_time()
-# 	print(f"time: {t}")
