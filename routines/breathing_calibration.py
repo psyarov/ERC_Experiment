@@ -53,6 +53,9 @@ def breathing_calibration(screen, clock):
                     return None
                 elif event.key == pygame.K_SPACE:
                     waiting = False
+                elif event.key == pygame.K_4:
+                    print("Skipping breathing calibration (pressed 4)")
+                    return True
         
         screen.fill(GRAY)
         
@@ -80,6 +83,9 @@ def breathing_calibration(screen, clock):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     return None
+                elif event.key == pygame.K_4:
+                    print("Skipping breathing calibration (pressed 4)")
+                    return True
         
         elapsed = clock.get_time() - start_time
         remaining = duration - elapsed
@@ -121,6 +127,9 @@ def breathing_calibration(screen, clock):
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         return None
+                    elif event.key == pygame.K_4:
+                        print("Skipping breathing calibration (pressed 4)")
+                        return True
             
             elapsed = clock.get_time() - start_time
             remaining = hold_duration - elapsed
@@ -153,6 +162,9 @@ def breathing_calibration(screen, clock):
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         return None
+                    elif event.key == pygame.K_4:
+                        print("Skipping breathing calibration (pressed 4)")
+                        return True
             
             elapsed = clock.get_time() - start_time
             remaining = recovery_duration - elapsed
@@ -202,6 +214,9 @@ def breathing_calibration(screen, clock):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     return None
+                elif event.key == pygame.K_4:
+                    print("Skipping breathing calibration (pressed 4)")
+                    return True
         
         elapsed = clock.get_time() - start_time
         progress = elapsed / break_duration  # 0.0 to 1.0

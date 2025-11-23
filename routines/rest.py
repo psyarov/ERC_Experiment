@@ -52,6 +52,9 @@ def rest(screen, clock):
                     return None
                 elif event.key == pygame.K_SPACE:
                     waiting = False
+                elif event.key == pygame.K_4:
+                    print("Skipping rest (pressed 4)")
+                    return True
         
         screen.fill(GRAY)
         
@@ -82,6 +85,9 @@ def rest(screen, clock):
                 if event.key == pygame.K_ESCAPE:
                     print("ESC pressed during rest period")
                     return None
+                elif event.key == pygame.K_4:
+                    print("Skipping rest (pressed 4)")
+                    return True
         
         elapsed = clock.get_time() - start_time
         progress = elapsed / rest_duration  # 0.0 to 1.0

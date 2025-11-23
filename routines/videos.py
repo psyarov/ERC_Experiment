@@ -53,6 +53,9 @@ def videos(screen, clock):
                     return None
                 elif event.key == pygame.K_SPACE:
                     waiting = False
+                elif event.key == pygame.K_4:
+                    print("Skipping videos (pressed 4)")
+                    return True
         
         screen.fill(GRAY)
         
@@ -88,6 +91,9 @@ def videos(screen, clock):
                 if event.key == pygame.K_ESCAPE:
                     print("ESC pressed during social media period")
                     return None
+                elif event.key == pygame.K_4:
+                    print("Skipping videos (pressed 4)")
+                    return True
         
         # Keep the screen black
         pygame.time.wait(100)  # Small delay to reduce CPU usage

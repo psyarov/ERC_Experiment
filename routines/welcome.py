@@ -56,6 +56,9 @@ def welcome_routine(screen, clock):
 			elif event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_ESCAPE:
 					return None
+				elif event.key == pygame.K_4:
+					print("Skipping welcome (pressed 4)")
+					return True
 			elif event.type == pygame.MOUSEBUTTONDOWN:
 				if current_state == STATE_WELCOME:
 					if red_button.is_clicked(event.pos):

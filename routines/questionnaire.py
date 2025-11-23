@@ -49,6 +49,9 @@ def questionnaire_routine(screen, clock):
                 elif event.key == pygame.K_SPACE:
                     space_pressed = True
                     running = False
+                elif event.key == pygame.K_4:
+                    print("Skipping questionnaire (pressed 4)")
+                    return True
         
         # Clear screen
         screen.fill(BLACK)

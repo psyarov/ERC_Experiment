@@ -43,6 +43,9 @@ def short_break(screen, clock):
                     return None
                 elif event.key == pygame.K_SPACE:
                     waiting = False
+                elif event.key == pygame.K_4:
+                    print("Skipping short break (pressed 4)")
+                    return True
         
         screen.fill(GRAY)
         

@@ -37,6 +37,10 @@ def gradCPT_routine(screen, clock, config=None):
     if not show_instructions(screen, clock, config, font_medium, font_small):
         return None
     
+    print("=" * 50)
+    print("GRADCPT ROUTINE")
+    print("=" * 50)
+    
     # Run all blocks
     for block_num in range(config.n_blocks):
         print(f"\n=== Starting Block {block_num + 1}/{config.n_blocks} ===")
@@ -92,6 +96,9 @@ def show_instructions(screen, clock, config, font_medium, font_small):
                     return None
                 elif event.key == pygame.K_SPACE:
                     return True
+                elif event.key == pygame.K_4:
+                    print("Skipping gradCPT (pressed 4)")
+                    return True
         
         screen.fill((128, 128, 128))  # Gray background
         
@@ -133,6 +140,9 @@ def show_block_start(screen, clock, config, font_medium, block_num):
                     return None
                 elif event.key == pygame.K_SPACE:
                     return True
+                elif event.key == pygame.K_4:
+                    print("Skipping gradCPT (pressed 4)")
+                    return True
         
         screen.fill((128, 128, 128))
         
@@ -163,6 +173,9 @@ def show_block_rest(screen, clock, font_medium):
                 if event.key == pygame.K_ESCAPE:
                     return None
                 elif event.key == pygame.K_SPACE:
+                    return True
+                elif event.key == pygame.K_4:
+                    print("Skipping gradCPT (pressed 4)")
                     return True
         
         screen.fill((128, 128, 128))
@@ -207,6 +220,9 @@ def run_gradcpt_block(screen, clock, config, stim_manager, data_logger, block_nu
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     return None
+                elif event.key == pygame.K_4:
+                    print("Skipping gradCPT (pressed 4)")
+                    return True
                 
                 # Check for valid response keys
                 key_name = pygame.key.name(event.key)

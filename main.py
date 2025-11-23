@@ -69,6 +69,182 @@ if running:
         print("Welcome routine: FAIL - continuing with experiment")
     print()
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# RUN EXPERIMENT ROUTINES
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run TRAIT-LEVEL QUESTIONNAIRE
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run breathing calibration #1
+result = breathing_calibration(screen, clock)
+
+if result is None:
+    print("Breathing calibration exited")
+    running = False
+else:
+    print("Breathing calibration: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run rest routine #1
+result = rest(screen, clock)
+if result is None:
+    print("Rest routine exited")
+    running = False
+else:
+    print("Rest routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #1 (before first S-TOL )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run S-TOL #1
+# (Placeholder for S-TOL routine, not implemented in this snippet)
+print("S-TOL #1 routine would run here.")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #2 (after first S-TOL )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run break routine #1
+result = short_break(screen, clock)
+if result is None:
+    print("Break routine exited")
+    running = False
+else:
+    print("Break routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run rest routine #2
+result = rest(screen, clock)
+if result is None:
+    print("Rest routine exited")
+    running = False
+else:
+    print("Rest routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #3 (before first gradCPT )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run gradCPT #1
+if running:
+    result = gradCPT_routine(screen, clock, config)
+
+    if result is None:
+        print("GradCPT routine exited")
+        running = False
+    elif result:
+        print("GradCPT routine: SUCCESS")
+    else:
+        print("GradCPT routine: FAIL")
+    print()
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run STATE-LEVEL QUESTIONNAIRE #4 (after first gradCPT )
+result = questionnaire_routine(screen, clock)
+
+if result is None:
+    print("Questionnaire routine exited")
+    running = False
+else:
+    print(f"Completed questionnaire instruction #{result}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run break routine #2
+result = short_break(screen, clock)
+if result is None:
+    print("Break routine exited")
+    running = False
+else:
+    print("Break routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run rest routine #3
+result = rest(screen, clock)
+if result is None:
+    print("Rest routine exited")
+    running = False
+else:
+    print("Rest routine: SUCCESS")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# Run breathing calibration
+result = breathing_calibration(screen, clock)
+if result is None:
+    print("Breathing calibration exited")
+    running = False
+else:
+    print("Breathing calibration: SUCCESS")
 
 # Run break routine
 result = short_break(screen, clock)
@@ -96,14 +272,6 @@ if result is None:
 else:
     print("Rest routine: SUCCESS")
 
-
-# Run breathing calibration 1
-result = breathing_calibration(screen, clock)
-if result is None:
-    print("Breathing calibration exited")
-    running = False
-else:
-    print("Breathing calibration: SUCCESS")
 
 # Run first questionnaire
 result = questionnaire_routine(screen, clock)
