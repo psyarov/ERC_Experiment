@@ -1,0 +1,2 @@
+participant_id,test_start_exp_time,test_start_berlin_time,test_end_exp_time,test_end_berlin_time,actual_duration_s,expected_duration_s,n_images_shown,expected_images,n_transitions,expected_transitions,n_keypresses,target_fps,transition_time_ms
+001,8.013337507999495,2025-11-25 11:48:53.877,128.02951526699962,2025-11-25 11:50:53.893,120.01617775900013,120.0,149,152,148,151,0,60,792.4

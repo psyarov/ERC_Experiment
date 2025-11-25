@@ -13,6 +13,7 @@ from routines.rest import rest
 from routines.videos import videos
 from routines.short_break import short_break
 from routines.end import end
+from routines.gradcpt_timing_test import gradcpt_timing_test
 
 
 # Init
@@ -69,6 +70,19 @@ if running:
     else:
         print("Welcome routine: FAIL - continuing with experiment")
     print()
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# RUN TEST ROUTINES
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Run gradCPT timing test
+result = gradcpt_timing_test(screen, clock, participant_id="001")
+if result is None:
+    print("Timing test exited")
+else:
+    print("Timing test complete - check data folder for results")
+
+
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # RUN EXPERIMENT ROUTINES
