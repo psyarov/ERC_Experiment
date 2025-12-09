@@ -1,0 +1,2 @@
+participant_id,test_start_exp_time,test_start_berlin_time,test_end_exp_time,test_end_berlin_time,actual_duration_s,expected_duration_s,n_transitions,expected_transitions,n_keypresses,transition_time_ms
+P001,0.0,2025-12-09 10:17:42.181,60.003,2025-12-09 10:18:42.184,60.003,60.0,74,75,35,800.0
